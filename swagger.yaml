@@ -1,0 +1,88 @@
+openapi: '3.0.2'
+info:
+  title: Atividade da Aula 14
+  version: '1.0'
+  contact:
+    name: Felipe de Azevedo Pessoa
+servers:
+  - url: http://localhost:3000
+paths:
+  /users:
+    get:
+      operationId: listUsers
+      summary: List all users
+      tags:
+        - user
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                          example: Felipe de Azevedo Pessoa
+                        email:
+                          type: string
+                          example: felipe@gmail.com
+                        password:
+                          type: string
+                          example: senha@123
+                        id:
+                          type: integer
+                          example: '1'
+    post:
+      tags:
+        - user
+      summary: Create a new user
+      operationId: createUser
+      requestBody:
+        description: Body properties required to create a user
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: 
+                  type: string
+                  example: Felipe de Azevedo Pessoa
+                email: 
+                  type: string
+                  example: felipe@gmail.com
+                password:
+                  type: string
+                  example: senha@123
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg: 
+                    type: string
+                    example: Usuário adicionado com sucesso
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg: 
+                    type: string
+                    example: Dados inválidos
+
+
+  
+                
+                  
